@@ -706,7 +706,7 @@ var link;
       blending: THREE.AdditiveBlending,
       side: THREE.BackSide,
     })
-  );
+  );*/
   {
     const loader = new THREE.TextureLoader();
     const texture = loader.load(
@@ -717,10 +717,10 @@ var link;
         scene.background = rt.texture;
       }
     );
-  }
-  atmosphere.scale.set(1.1, 1.1, 1.1);*/
+  }/*
+  atmosphere.scale.set(1.1, 1.1, 1.1);
 
-  /*const material2 = new THREE.MeshPhongMaterial({
+  const material2 = new THREE.MeshPhongMaterial({
     specular: 0x111111,
     shininess: 5,
     map: textureLoader.load(
@@ -737,12 +737,12 @@ var link;
     bumpScale: 0.35,
     blending: THREE.AdditiveBlending,
     //side: THREE.DoubleSide
-  });*/
+  });
 
   //onst bumpTexture = new THREE.TextureLoader().load('//unpkg.com/three-globe/example/img/earth-topology.png')
   //material.bumpMap = bumpTexture
   //material.bumpScale = 0.015
-  /*let globe = new THREE.Mesh(geometry2, material);
+  let globe = new THREE.Mesh(geometry2, material);
   let globe2 = new THREE.Mesh(geometry, material2);
   scene.add(atmosphere);
   scene.add(globe);
@@ -751,17 +751,17 @@ var link;
   setTimeout(() => {
     link = true;
     console.log("link is now true");
-  }, 2000);*/
+  }, 2000);
 
-  /*function toggleTexture() {
+  function toggleTexture() {
     currentTextures = isDay ? texturesNight : texturesDay;
     globe.material.uniforms.texture.value = currentTextures[link ? 0 : 1]; // Use the first texture if link is true, else the second
     globe.material.uniforms.texture.needsUpdate = true;
     isDay = !isDay;
     console.log("Texture toggled", currentTextures[link ? 0 : 1]);
-  }*/
+  }
 
-  /*// custom globe material
+  // custom globe material
   const globeMaterial = globe.material;
   material.bumpScale = 10;
   new THREE.TextureLoader().load(
@@ -771,9 +771,9 @@ var link;
       globeMaterial.specular = new THREE.Color("grey");
       globeMaterial.shininess = 15;
     }
-  );*/
+  );
 
-  /*setTimeout(() => {
+  setTimeout(() => {
     // wait for scene to be populated (asynchronously)
     var dl = new THREE.DirectionalLight(0xffffff, 1);
     dl.position.set(1, 1, 1);
@@ -794,9 +794,9 @@ var link;
 
   var light = new THREE.DirectionalLight(0xf0f0f0, 1);
   light.position.set(5, 3, 5);
-  scene.add(light);*/
+  scene.add(light);
   // custom globe material
-  /* const globeMaterial = globe.material();
+   const globeMaterial = globe.material();
       globeMaterial.bumpScale = 10;
       new THREE.TextureLoader().load(
         "//unpkg.com/three-globe/example/img/earth-water.png",
