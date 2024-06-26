@@ -861,9 +861,10 @@ var link;
     uniforms: {
       globeTexture: { value: currentTextures[0] },
       bumpMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-topology.png") },
-      bumpScale: { value: 0.2 },
+      bumpScale: { value: 0.8 },
       specularMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-water.png") },
       /*specular: { value: new THREE.Color(0x333333) }*/
+      shininess: { value: 30 },
     }
   });
   const globe = new THREE.Mesh(sphereGeometry, globeMaterial);
