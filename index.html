@@ -847,7 +847,8 @@ var link;
     vec4 texelColor = texture2D(globeTexture, vertexUV);
     vec4 bumpColor = texture2D(bumpMap, vertexUV);
     vec4 specularColor = texture2D(specularMap, vertexUV);
-    vec3 finalColor = atmosphere + texelColor.xyz * bumpColor.xyz + specularColor.xyz * specular; gl_FragColor = vec4(finalColor, 1.0);
+    vec3 finalColor = atmosphere + texelColor.xyz * bumpColor.xyz + specularColor.xyz * specular;
+    gl_FragColor = vec4(finalColor, 1.0);
     }
     `,
     uniforms: {
@@ -885,10 +886,10 @@ var link;
   scene.add(atmosphere);
   // Toggle textures function
   function toggleTexture() {
-    currentTextures = isDay ? texturesNight : texturesDay;
+    isDay = !isDay;
+    currentTextures = isDay ? texturesDay : texturesNight;
     globeMaterial.uniforms.globeTexture.value = currentTextures[0];
     globeMaterial.uniforms.globeTexture.needsUpdate = true;
-    isDay = !isDay;
     console.log("Texture toggled", currentTextures[0].image.src);
   } 
   // Example of toggling textures every 30 seconds
