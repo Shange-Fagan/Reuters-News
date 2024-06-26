@@ -527,7 +527,7 @@
   //const gui = new GUI();
 
   /* Textures */
-  const textureLoader = new THREE.TextureLoader();
+  /*const textureLoader = new THREE.TextureLoader();
 
   //const textureLoader = new THREE.TextureLoader();
 
@@ -541,6 +541,7 @@
   let currentTextures = texturesDay; 
   let isDay = true; 
   let link = false;
+  */
   
   /*var myTexture;
   var texture1 = [
@@ -573,7 +574,7 @@ var link;
   //GlobeTheme: 0,
   //};
 
-  const updateAllMaterials = () => {
+  /*const updateAllMaterials = () => {
     scene.traverse((child) => {
       if (
         child instanceof THREE.Mesh &&
@@ -584,7 +585,7 @@ var link;
         //child.material.map = textureLoader.load("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg");
       }
     });
-  };
+  };*/
 
   //gui
   // .add(parameters, "GlobeTheme", {
@@ -599,25 +600,25 @@ var link;
 
   //gui.open();
 
-  const sphereWidth = 5.1;
+  /*const sphereWidth = 5.1;
   const sphereHeight = 32.1;
   const sphereDepth = 32.1;
   const geometry = new THREE.SphereGeometry(
     sphereWidth,
     sphereHeight,
     sphereDepth
-  );
+  );*/
 
-  const sphereWidth2 = 5;
+  /*const sphereWidth2 = 5;
   const sphereHeight2 = 32.1;
   const sphereDepth2 = 32.1;
   const geometry2 = new THREE.SphereGeometry(
     sphereWidth2,
     sphereHeight2,
     sphereDepth2
-  );
+  );*/
   //const textureLoader = new THREE.TextureLoader();
-  const shaderMaterial = new THREE.ShaderMaterial({});
+  /*const shaderMaterial = new THREE.ShaderMaterial({});
 
   const material = new THREE.ShaderMaterial({
     vertexShader: `
@@ -648,7 +649,7 @@ var link;
                         gl_FragColor = vec4(atmosphere +texture2D(globeTexture, vertexUV).xyz, 1.0),
                          vec4(atmosphere +texture2D(bumpMap, vertexUV).xyz, 2.0);
                      }
-                    `,
+                    `,*/
 
     uniforms: {
       texture: {value: currentTextures[0] },
@@ -719,7 +720,7 @@ var link;
   }
   atmosphere.scale.set(1.1, 1.1, 1.1);
 
-  const material2 = new THREE.MeshPhongMaterial({
+  /*const material2 = new THREE.MeshPhongMaterial({
     specular: 0x111111,
     shininess: 5,
     map: textureLoader.load(
@@ -736,12 +737,12 @@ var link;
     bumpScale: 0.35,
     blending: THREE.AdditiveBlending,
     //side: THREE.DoubleSide
-  });
+  });*/
 
   //onst bumpTexture = new THREE.TextureLoader().load('//unpkg.com/three-globe/example/img/earth-topology.png')
   //material.bumpMap = bumpTexture
   //material.bumpScale = 0.015
-  let globe = new THREE.Mesh(geometry2, material);
+  /*let globe = new THREE.Mesh(geometry2, material);
   let globe2 = new THREE.Mesh(geometry, material2);
   scene.add(atmosphere);
   scene.add(globe);
@@ -750,17 +751,17 @@ var link;
   setTimeout(() => {
     link = true;
     console.log("link is now true");
-  }, 2000);
+  }, 2000);*/
 
-  function toggleTexture() {
+  /*function toggleTexture() {
     currentTextures = isDay ? texturesNight : texturesDay;
     globe.material.uniforms.texture.value = currentTextures[link ? 0 : 1]; // Use the first texture if link is true, else the second
     globe.material.uniforms.texture.needsUpdate = true;
     isDay = !isDay;
     console.log("Texture toggled", currentTextures[link ? 0 : 1]);
-  }
+  }*/
 
-  // custom globe material
+  /*// custom globe material
   const globeMaterial = globe.material;
   material.bumpScale = 10;
   new THREE.TextureLoader().load(
@@ -770,9 +771,9 @@ var link;
       globeMaterial.specular = new THREE.Color("grey");
       globeMaterial.shininess = 15;
     }
-  );
+  );*/
 
-  setTimeout(() => {
+  /*setTimeout(() => {
     // wait for scene to be populated (asynchronously)
     var dl = new THREE.DirectionalLight(0xffffff, 1);
     dl.position.set(1, 1, 1);
@@ -793,7 +794,7 @@ var link;
 
   var light = new THREE.DirectionalLight(0xf0f0f0, 1);
   light.position.set(5, 3, 5);
-  scene.add(light);
+  scene.add(light);*/
   // custom globe material
   /* const globeMaterial = globe.material();
       globeMaterial.bumpScale = 10;
@@ -809,7 +810,101 @@ var link;
   //let icshdrn = new THREE.Mesh(new THREE.IcosahedronGeometry(rad, 1), new THREE//.MeshBasicMaterial({color: 0x647f7f, wireframe: true}));
   //globe.add(icshdrn);
   // </ICOSAHEDRON>
-
+  const textureLoader = new THREE.TextureLoader();
+  // Textures
+  const texturesDay = [
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"),
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-day.jpg") ];
+  const texturesNight = [
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-night.jpg"),
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-dark.jpg") ];
+  let currentTextures = texturesDay;
+  let isDay = true;
+  let link = false;
+  // Sphere geometry and material
+  const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
+  const globeMaterial = new THREE.ShaderMaterial({
+    vertexShader: `
+    varying vec2 vertexUV;
+    varying vec3 vertexNormal;
+    void main() {
+    vertexUV = uv;
+    vertexNormal = normalize(normalMatrix * normal);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1);
+    }
+    `,
+    fragmentShader: `
+    uniform sampler2D globeTexture;
+    uniform sampler2D bumpMap;
+    uniform float bumpScale;
+    uniform sampler2D specularMap;
+    uniform vec3 specular;
+    varying vec2 vertexUV;
+    varying vec3 vertexNormal;
+    void main() {
+    float intensity = 1.05 - dot(vertexNormal, vec3(0, 0, 1.0));
+    vec3 atmosphere = (vec3(0.3, 0.6, 1.0)) * pow(intensity, 1.5);
+    vec4 texelColor = texture2D(globeTexture, vertexUV);
+    vec4 bumpColor = texture2D(bumpMap, vertexUV);
+    vec4 specularColor = texture2D(specularMap, vertexUV);
+    vec3 finalColor = atmosphere + texelColor.xyz * bumpColor.xyz + specularColor.xyz * specular; gl_FragColor = vec4(finalColor, 1.0);
+    }
+    `,
+    uniforms: {
+      globeTexture: { value: currentTextures[0] },
+      bumpMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-topology.png") },
+      bumpScale: { value: 10 },
+      specularMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-water.png") },
+      specular: { value: newTHREE.Color("grey") }
+    }
+  });
+  const globe = new THREE.Mesh(sphereGeometry, globeMaterial);
+  scene.add(globe); 
+  // Atmosphere 
+  const atmosphereMaterial = new THREE.ShaderMaterial({
+    vertexShader: `
+    varying vec3 vertexNormal;
+    void main() {
+    vertexNormal = normalize(normalMatrix * normal);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1);
+    }
+    `,
+    fragmentShader: `
+    varying vec3 vertexNormal;
+    void main() {
+    float intensity = pow(0.6 - dot(vertexNormal, vec3(0, 0, 1.0)), 2.0);
+    gl_FragColor = vec4(0.3, 0.6, 1.0, 1.0) * intensity;
+    }
+    `,
+    blending: THREE.AdditiveBlending,
+    side: THREE.BackSide,
+  });
+  const atmosphereGeometry = new THREE.SphereGeometry(5, 32, 32);
+  const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+  atmosphere.scale.set(1.1, 1.1, 1.1);
+  scene.add(atmosphere);
+  // Toggle textures function
+  function toggleTexture() {
+    currentTextures = isDay ? texturesNight : texturesDay;
+    globeMaterial.uniforms.globeTexture.value = currentTextures[link ? 0 : 1];
+    globeMaterial.uniforms.globeTexture.needsUpdate = true;
+    isDay = !isDay;
+    console.log("Texture toggled", currentTextures[link ? 0 : 1].url);
+  } 
+  // Example of toggling textures every 5 seconds
+  setInterval(toggleTexture, 5000);
+  
+  // Setting link to true after 2 seconds (simulating async loading)
+  setTimeout(() => {
+    link = true;
+    console.log("link is now true");
+    }, 2000);
+  // Lighting
+  const directionalLight = new THREE.DirectionalLight(0x909090, 1);
+  directionalLight.position.set(-1, -1, -1);
+  scene.add(directionalLight);
+  const ambientLight = new THREE.AmbientLight(0x808080);
+  scene.add(ambientLight);
   // </GLOBE>
 
   // <Markers>
