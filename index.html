@@ -530,14 +530,44 @@
   const textureLoader = new THREE.TextureLoader();
 
   //const textureLoader = new THREE.TextureLoader();
-  const myTexture = [
-    textureLoader.load(
+
+  const texturesDay = [ 
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"), 
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-day.jpg") ]; 
+  
+  const texturesNight = [ 
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-night.jpg"), 
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-dark.jpg") ]; 
+  let currentTextures = texturesDay; 
+  let isDay = true; 
+  let link = false;
+  
+  /*var myTexture;
+  var texture1 = [
+              textureLoader.load(
       "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-    ),
+    ),]
     textureLoader.load("//unpkg.com/three-globe/example/img/earth-night.jpg"),
     textureLoader.load("//unpkg.com/three-globe/example/img/earth-day.jpg"),
     textureLoader.load("//unpkg.com/three-globe/example/img/earth-dark.jpg"),
-  ];
+    
+];
+  var texture2 = [
+              textureLoader.load(
+      "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+    ),]
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-night.jpg"),
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-day.jpg"),
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-dark.jpg"),
+    
+];  
+var link;
+  function loading(){
+    setTimeout(function(){
+      link = true;
+    }, 2000);
+  }
+  if(link == true) {var myTexture == texture1}else{var myTexture == texture2];*/
 
   //const parameters = {
   //GlobeTheme: 0,
@@ -621,6 +651,7 @@
                     `,
 
     uniforms: {
+      texture: {value: currenttextures[0] }
       /*"color": { value: new THREE.Color( 0xffffff ) },
   			"diffuse": { value: new THREE.Color( 0xffffff ) },*/
       specular: { value: new THREE.Color("grey") },
@@ -715,6 +746,20 @@
   scene.add(atmosphere);
   scene.add(globe);
   scene.add(globe2);
+  setInterval( toggleTexture, 5000);
+  setTimeout(() => {
+    link = true;
+    console.log("link is now true");
+  }, 2000);
+
+  function toggleTexture() {
+    currentTextures = isDay ? texturesNight : texturesDay;
+    globe.material.uniforms.texture.value = currentTextures[link ? 0 : 1]; // Use the first texture if link is true, else the second
+    globe.material.uniforms.texture.needsUpdate = true;
+    isDay = !isDay;
+    console.log("Texture toggled", currentTextures[link ? 0 : 1]);
+  }
+
   // custom globe material
   const globeMaterial = globe.material;
   material.bumpScale = 10;
