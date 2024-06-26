@@ -886,10 +886,10 @@ var link;
   // Toggle textures function
   function toggleTexture() {
     currentTextures = isDay ? texturesNight : texturesDay;
-    globeMaterial.uniforms.globeTexture.value = currentTextures[link ? 0 : 1];
+    globeMaterial.uniforms.globeTexture.value = currentTextures[0];
     globeMaterial.uniforms.globeTexture.needsUpdate = true;
     isDay = !isDay;
-    console.log("Texture toggled", currentTextures[link ? 0 : 1].url);
+    console.log("Texture toggled", currentTextures[0].image.src);
   } 
   // Example of toggling textures every 30 seconds
   setInterval(toggleTexture, 30000);
