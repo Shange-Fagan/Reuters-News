@@ -813,11 +813,20 @@ var link;
   const textureLoader = new THREE.TextureLoader();
   // Textures
   const texturesDay = [
-    textureLoader.load("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg")];
-    //textureLoader.load("//unpkg.com/three-globe/example/img/earth-day.jpg") ];
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg", () => {
+      console.log("day texture loaded");
+      , undefined, (err) => {
+      console.error("error loading day texture", err);
+    })
+  ];
+    
   const texturesNight = [
-    textureLoader.load("//unpkg.com/three-globe/example/img/earth-night.jpg")];
-    //textureLoader.load("//unpkg.com/three-globe/example/img/earth-dark.jpg") ];
+    textureLoader.load("//unpkg.com/three-globe/example/img/earth-night.jpg", () => {
+      console.log("night texture loaded");
+      , undefined, (err) => {
+      console.error("error loading night texture", err);
+    })
+        ];
   let currentTextures = texturesDay;
   let isDay = true;
   let link = false;
