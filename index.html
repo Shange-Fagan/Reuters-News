@@ -855,7 +855,7 @@ var link;
       bumpMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-topology.png") },
       bumpScale: { value: 10 },
       specularMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-water.png") },
-      specular: { value: newTHREE.Color("grey") }
+      specular: { value: new THREE.Color("grey") }
     }
   });
   const globe = new THREE.Mesh(sphereGeometry, globeMaterial);
