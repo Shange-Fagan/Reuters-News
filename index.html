@@ -2120,23 +2120,19 @@ scene.add(pointLightHelper);*/
       label.position.copy(mi.crd);
       label.element.animate(
         [
-          { // start from current width and height
-            width: label.element.offsetWidth + 'px',
-            height: label.element.offsetHeight + 'px',
-            opacity: 0 // optionally animate opacity as well
-              },
-              { // animate to desired final state
-                width: 'auto', // or whatever final width you want
-                height: 'auto', // or whatever final height you want
-                opacity: 1
-                }
+          {
+            width: "0px",
+            height: "0px" /*marginTop: "0px", marginLeft: "0px"*/,
+          },
+          {
+            width: "142px",
+            height: "186px" /*marginTop: "-25px", marginLeft: "120px*/,
+          },
         ],
         {
-          duration: 250, // animation duration in milliseconds
-          easing: 'ease-out', // easing function for smooth animation
-          fill: 'both' // keep styles applied after animation completes
-            }
-      ); 
+          duration: 250,
+        }
+      );
      
       label.element.classList.remove("hidden");
     }
