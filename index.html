@@ -833,18 +833,18 @@ var link;
   // Sphere geometry and material
   const sphereGeometry2 = new THREE.SphereGeometry(5, 32.1, 32.1);
   const globeMaterial2 = new THREE.MeshPhongMaterial({
-    /*specular: 0x111111,
+    specular: 0x111111,
     shininess: 5,
     map: currentTextures[0],
     specularMap: textureLoader.load(
       "//unpkg.com/three-globe/example/img/earth-water.png"
-    ),*/
+    ),
     //normalMap: textureLoader.load( '//unpkg.com/three-globe/example/img/earth-blue-marble.jpg' ),
     //normalScale: new THREE.Vector2( 0.85, 0.85 ),
-    /*bumpMap: textureLoader.load(
+    bumpMap: textureLoader.load(
       "//unpkg.com/three-globe/example/img/earth-topology.png"
-    ),*/
-    /*bumpScale: 0.35,*/
+    ),
+    bumpScale: 0.35,
     /*blending: THREE.AdditiveBlending,*/
     //side: THREE.DoubleSide
   });
