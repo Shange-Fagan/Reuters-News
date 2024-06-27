@@ -831,6 +831,23 @@ var link;
   let isDay = true;
   let link = false;
   // Sphere geometry and material
+  const sphereGeometry2 = new THREE.SphereGeometry(5.1, 32.1, 32.1);
+  const globeMaterial2 = new THREE.MeshPhongMaterial({
+    specular: 0x111111,
+    shininess: 5,
+    map: { value: currentTextures[0] },
+    specularMap: textureLoader.load(
+      "//unpkg.com/three-globe/example/img/earth-water.png"
+    ),
+    //normalMap: textureLoader.load( '//unpkg.com/three-globe/example/img/earth-blue-marble.jpg' ),
+    //normalScale: new THREE.Vector2( 0.85, 0.85 ),
+    bumpMap: textureLoader.load(
+      "//unpkg.com/three-globe/example/img/earth-topology.png"
+    ),
+    bumpScale: 0.35,
+    blending: THREE.AdditiveBlending,
+    //side: THREE.DoubleSide
+  });
   const sphereGeometry = new THREE.SphereGeometry(5, 32.1, 32.1);
   const globeMaterial = new THREE.ShaderMaterial({
     vertexShader: `
@@ -859,16 +876,18 @@ var link;
     vec3 finalColor = atmosphere + texelColor.xyz + specularColor.xyz * specular;
     gl_FragColor = vec4(finalColor, 1.0); } `,
     uniforms: {
-      globeTexture: { value: currentTextures[0] },
+      globeTexture: { value: "" },
       bumpMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-topology.png") },
-      bumpScale: { value: 0.35 },
+      bumpScale: { value: 10 },
       specularMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-water.png") },
-      specular: { value: new THREE.Color(0x111111) },
+      specular: { value: new THREE.Color("grey") },
       shininess: { value: 15 },
     }
   });
   const globe = new THREE.Mesh(sphereGeometry, globeMaterial);
-  scene.add(globe); 
+  const globe2 = new THREE.Mesh(sphereGeometry2, globeMaterial2);
+  scene.add(globe);
+  scene.add(globe2);
   // Atmosphere 
   const atmosphereMaterial = new THREE.ShaderMaterial({
     vertexShader: `
