@@ -942,7 +942,7 @@ var link;
   scene.add(directionalLight);
   const ambientLight = new THREE.AmbientLight(0x808080);
   scene.add(ambientLight);*/
-  setTimeout(() => {
+  /*setTimeout(() => {
     // wait for scene to be populated (asynchronously)
     var dl = new THREE.DirectionalLight(0xffffff, 1);
     dl.position.set(1, 1, 1);
@@ -963,7 +963,24 @@ var link;
 
   var light = new THREE.DirectionalLight(0xf0f0f0, 1);
   light.position.set(5, 3, 5);
-  scene.add(light);
+  scene.add(light);*/
+  // Lighting setup // Directional light simulating the sun
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1); 
+directionalLight.position.set(5, 5, 5).normalize(); scene.add(directionalLight);
+// Ambient light to provide a base level of illumination
+const ambientLight = new THREE.AmbientLight(0x404040, 1.5); 
+// Increased intensity for a brighter look
+scene.add(ambientLight);
+// Point light to add more brightness and highlights
+const pointLight = newTHREE.PointLight(0xffffff, 1.5, 100);
+pointLight.position.set(10, 10, 10);
+scene.add(pointLight);
+// Hemisphere light for soft lighting
+const hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, 0.9);
+scene.add(hemisphereLight);
+// Optional: Add a helper to visualize the point light position
+const pointLightHelper = newTHREE.PointLightHelper(pointLight, 1);
+scene.add(pointLightHelper);
   // </GLOBE>
 
   // <Markers>
