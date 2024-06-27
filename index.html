@@ -861,10 +861,10 @@ var link;
     uniforms: {
       globeTexture: { value: currentTextures[0] },
       bumpMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-topology.png") },
-      bumpScale: { value: 4 },
+      bumpScale: { value: 0.35 },
       specularMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-water.png") },
-      /*specular: { value: new THREE.Color(0x00CCCCCC) },*/
-      shininess: { value: 30 },
+      specular: { value: new THREE.Color(0x111111) },
+      shininess: { value: 15 },
     }
   });
   const globe = new THREE.Mesh(sphereGeometry, globeMaterial);
@@ -888,7 +888,7 @@ var link;
     blending: THREE.AdditiveBlending,
     side: THREE.BackSide,
   });
-  const atmosphereGeometry = new THREE.SphereGeometry(5, 32.1, 32.1);
+  const atmosphereGeometry = new THREE.SphereGeometry(5.1, 32.1, 32.1);
   const atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
   atmosphere.scale.set(1.1, 1.1, 1.1);
   scene.add(atmosphere);
