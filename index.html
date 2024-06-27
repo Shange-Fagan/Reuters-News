@@ -860,6 +860,7 @@ var link;
     }
     `,
     fragmentShader: `
+    uniform sampler2D globeTexture;
     uniform sampler2D bumpMap;
     uniform float bumpScale;
     uniform sampler2D specularMap;
@@ -875,8 +876,7 @@ var link;
     vec3 finalColor = atmosphere + texelColor.xyz + specularColor.xyz * specular;
     gl_FragColor = vec4(finalColor, 1.0); } `,
     uniforms: {
-      /*globeTexture: { value: "" },*/
-      /*uniform sampler2D globeTexture;*/
+      globeTexture: { value: currentTextures[0] },
       bumpMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-topology.png") },
       bumpScale: { value: 10 },
       specularMap: { value: textureLoader.load("//unpkg.com/three-globe/example/img/earth-water.png") },
