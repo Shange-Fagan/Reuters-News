@@ -2108,11 +2108,24 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label.position.copy(mi.crd);
       label.element.animate(
-        
+        [
+          { // start from current width and height
+            width: label.element.offsetWidth + 'px',
+            height: label.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
+     
       label.element.classList.remove("hidden");
     }
   });
@@ -2143,11 +2156,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label2.position.copy(mi2.crd2);
       label2.element.animate(
-        
+        [
+          { // start from current width and height
+            width: label2.element.offsetWidth + 'px',
+            height: label2.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label2.element.classList.remove("hidden");
     }
   });
@@ -2177,11 +2202,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label3.position.copy(mi3.crd3);
       label3.element.animate(
-        
+        [
+          { // start from current width and height
+            width: label3.element.offsetWidth + 'px',
+            height: label3.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label3.element.classList.remove("hidden");
     }
   });
@@ -2211,11 +2248,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label4.position.copy(mi4.crd4);
       label4.element.animate(
-        
+       [
+          { // start from current width and height
+            width: label4.element.offsetWidth + 'px',
+            height: label4.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label4.element.classList.remove("hidden");
     }
   });
@@ -2245,11 +2294,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label5.position.copy(mi5.crd5);
       label5.element.animate(
-      
+      [
+          { // start from current width and height
+            width: label5.element.offsetWidth + 'px',
+            height: label5.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label5.element.classList.remove("hidden");
     }
   });
@@ -2279,11 +2340,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label6.position.copy(mi6.crd6);
       label6.element.animate(
-      
+      [
+          { // start from current width and height
+            width: label6.element.offsetWidth + 'px',
+            height: label6.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label6.element.classList.remove("hidden");
     }
   });
@@ -2313,11 +2386,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label7.position.copy(mi7.crd7);
       label7.element.animate(
-        
+        [
+          { // start from current width and height
+            width: label7.element.offsetWidth + 'px',
+            height: label7.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label7.element.classList.remove("hidden");
     }
   });
@@ -2347,11 +2432,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label8.position.copy(mi8.crd8);
       label8.element.animate(
-        
+        [
+          { // start from current width and height
+            width: label8.element.offsetWidth + 'px',
+            height: label8.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label8.element.classList.remove("hidden");
     }
   });
@@ -2381,11 +2478,23 @@ scene.add(pointLightHelper);*/
       divCrd.innerHTML = `X: <b>${mi.crd.x.toFixed(2)}</b>; Y: <b>${mi.crd.y.toFixed(2)}</b>; Z: <b>${mi.crd.z.toFixed(2)}</b>`;*/
       label9.position.copy(mi9.crd9);
       label9.element.animate(
-        
+        [
+          { // start from current width and height
+            width: label9.element.offsetWidth + 'px',
+            height: label9.element.offsetHeight + 'px',
+            opacity: 0 // optionally animate opacity as well
+              },
+              { // animate to desired final state
+                width: '142', // or whatever final width you want
+                height: '186', // or whatever final height you want opacity: 1
+                }
+        ],
         {
-          duration: 250,
-        }
-      );
+          duration: 250, // animation duration in milliseconds
+          easing: 'ease-out', // easing function for smooth animation
+          fill: 'both' // keep styles applied after animation completes
+            }
+      ); 
       label9.element.classList.remove("hidden");
     }
   });
