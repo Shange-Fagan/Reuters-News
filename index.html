@@ -831,7 +831,7 @@ var link;
   let isDay = true;
   let link = false;
   // Sphere geometry and material
-  const sphereGeometry2 = new THREE.SphereGeometry(5.1, 32.1, 32.1);
+  const sphereGeometry2 = new THREE.SphereGeometry(5, 32.1, 32.1);
   const globeMaterial2 = new THREE.MeshPhongMaterial({
     specular: 0x111111,
     shininess: 5,
@@ -848,7 +848,7 @@ var link;
     blending: THREE.AdditiveBlending,
     //side: THREE.DoubleSide
   });
-  const sphereGeometry = new THREE.SphereGeometry(5, 32.1, 32.1);
+  const sphereGeometry = new THREE.SphereGeometry(5.1, 32.1, 32.1);
   const globeMaterial = new THREE.ShaderMaterial({
     vertexShader: `
     varying vec2 vertexUV;
@@ -884,8 +884,8 @@ var link;
       shininess: { value: 15 },
     }
   });
-  const globe = new THREE.Mesh(sphereGeometry, globeMaterial);
-  const globe2 = new THREE.Mesh(sphereGeometry2, globeMaterial2);
+  const globe = new THREE.Mesh(sphereGeometry2, globeMaterial);
+  const globe2 = new THREE.Mesh(sphereGeometry, globeMaterial2);
   scene.add(globe);
   scene.add(globe2);
   // Atmosphere 
