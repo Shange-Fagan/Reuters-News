@@ -972,14 +972,14 @@ const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
 // Increased intensity for a brighter look
 scene.add(ambientLight);
 // Point light to add more brightness and highlights
-const pointLight = newTHREE.PointLight(0xffffff, 1.5, 100);
+const pointLight = new THREE.PointLight(0xffffff, 1.5, 100);
 pointLight.position.set(10, 10, 10);
 scene.add(pointLight);
 // Hemisphere light for soft lighting
 const hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, 0.9);
 scene.add(hemisphereLight);
 // Optional: Add a helper to visualize the point light position
-const pointLightHelper = newTHREE.PointLightHelper(pointLight, 1);
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 1);
 scene.add(pointLightHelper);
   // </GLOBE>
 
