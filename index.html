@@ -902,7 +902,7 @@ var link;
       console.error("error loading night texture", err);
     })
         ];
-  let currentTextures = texturesDay;
+  let currentTextures = texturesNight;
   let isDay = true;
   let link = false;
   // Sphere geometry and material
@@ -995,7 +995,7 @@ var link;
     console.log("Texture toggled", currentTextures[0].image.src);
   }*/
   // Example of toggling textures every 12 hours
-  const intervalDuration = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+  const intervalDuration = 6 * 60 * 60 * 1000; // 12 hours in milliseconds
   setInterval(toggleTexture, intervalDuration);
   function toggleTexture() {
     isDay = !isDay;
